@@ -1173,23 +1173,23 @@ $.fn.jqGrid = function( pin ) {
 		}
 
 		var p = $.extend(true,{
-			url: "",
+			url: "",                                  //请求数据的URL地址
 			height: 150,
-			page: 1,
-			rowNum: 20,
+			page: 1,                                  //设置请求初始页的数量
+			rowNum: 20,                               //表格中可见的记录数
 			rowTotal : null,
 			records: 0,
 			pager: "",
 			pgbuttons: true,
 			pginput: true,
-			colModel: [],
+			colModel: [],                             //列参数数组
 			rowList: [],
-			colNames: [],
+			colNames: [],                             //列名称数组
 			sortorder: "asc",
 			sortname: "",
-			datatype: "xml",
+			datatype: "xml",                          //定义表格希望获得的数据的类型
 			mtype: "GET",
-			altRows: false,
+			altRows: false,                           //设置为交替行表格
 			selarrrow: [],
 			savedRow: [],
 			shrinkToFit: true,
@@ -1223,7 +1223,7 @@ $.fn.jqGrid = function( pin ) {
 			multikey: false,
 			editurl: null,
 			search: false,
-			caption: "",
+			caption: "",                            //表格的标题。显示在header上。若为空将不再显示
 			hidegrid: true,
 			hiddengrid: false,
 			postData: {},
@@ -1252,8 +1252,8 @@ $.fn.jqGrid = function( pin ) {
 			},
 			forceFit : false,
 			gridstate : "visible",
-			cellEdit: false,
-			cellsubmit: "remote",
+			cellEdit: false,         //是否允许单元格编辑
+			cellsubmit: "remote",    //确定单元格内容保存方式是remote还是clientArray。
 			nv:0,
 			loadui: "enable",
 			toolbar: [false,""],
@@ -1261,9 +1261,9 @@ $.fn.jqGrid = function( pin ) {
 			multiboxonly : false,
 			deselectAfterSort : true,
 			scrollrows : false,
-			autowidth: false,
+			autowidth: false,       //当设置为true时，表格宽度将自动匹配到父元素的高度。只在表格建立时进行，为了使表格在父元素宽度变化时也随之变化，可以使用setGridWidth方法
 			scrollOffset : 18,
-			cellLayout: 5,
+			cellLayout: 5,          //该属性确定单元格的padding + border 宽度。常不修改该属性，但若表格的CSS中改变了td元素，该属性需要修改。
 			subGridWidth: 20,
 			multiselectWidth: 30,
 			gridview: true,
@@ -1274,17 +1274,17 @@ $.fn.jqGrid = function( pin ) {
 			footerrow : false,
 			userDataOnFooter : false,
 			hoverrows : true,
-			altclass : 'ui-priority-secondary',
+			altclass : 'ui-priority-secondary',                //交替行的类。仅当altRows设置为true时有效。
 			viewsortcols : [false,'vertical',true],
 			resizeclass : '',
-			autoencode : false,
+			autoencode : false,                                //当设置为true时，对来自服务器的数据和提交数据进行encodes编码。
 			remapColumns : [],
-			ajaxGridOptions :{},
-			direction : "ltr",
+			ajaxGridOptions :{},                               //当表格设置获得数据时，ajax的全局属性
+			direction : "ltr",                                 //
 			toppager: false,
 			headertitles: false,
 			scrollTimeout: 40,
-			data : [],
+			data : [],                                         //以数组的形式保存本地数据
 			_index : {},
 			grouping : false,
 			groupingView : {
@@ -8115,7 +8115,7 @@ $.jgrid.extend({
 					afterRedraw : p.afterRedraw,
 					ops : p.odata,
 					operands : p.operands,
-					ajaxSelectOptions: $t.p.ajaxSelectOptions,
+					ajaxSelectOptions: $t.p.ajaxSelectOptions,           //此项用于设置在editoptions或searchoptions对象中通过dataUrl选择元素时， ajax的全局属性。 
 					groupOps: p.groupOps,
 					onChange : function() {
 						if(this.p.showQuery) {
@@ -13493,7 +13493,7 @@ $.jgrid.extend({
 					query.orderBy(pivotGrid.groupOptions.sortname, so, st, '', st);					
 				}
 				jQuery($t).jqGrid($.extend(true, {
-					datastr: $.extend(query.select(),footerrow ? {userdata:pivotGrid.summary} : {}),
+					datastr: $.extend(query.select(),footerrow ? {userdata:pivotGrid.summary} : {}),    //当datatype被设置为xmlstring或jsonstring时，为数据串。
 					datatype: "jsonstring",
 					footerrow : footerrow,
 					userDataOnFooter: footerrow,
